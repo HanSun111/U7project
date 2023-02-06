@@ -169,7 +169,7 @@ public class MovieCollection
         String searchName = scanner.nextLine();
         searchName = searchName.toLowerCase();
         for(int i = 0; i < movies.size(); i++){
-            String[] people = movies.get(i).getCast().split("");
+            String[] people = movies.get(i).getCast().split("|");
         }
     }
 
