@@ -165,6 +165,9 @@ public class MovieCollection
 
     private void searchCast()
     {
+        System.out.print("Enter a name: ");
+        String searchName = scanner.nextLine();
+        searchName = searchName.toLowerCase();
 
     }
 
@@ -179,7 +182,6 @@ public class MovieCollection
         {
             String keyWord = movies.get(i).getKeywords();
             keyWord = keyWord.toLowerCase();
-
             if(keyWord.contains(searchTerm)){
                 word.add(movies.get(i));
             }
@@ -188,10 +190,7 @@ public class MovieCollection
         for (int i = 0; i < word.size(); i++)
         {
             String title = word.get(i).getTitle();
-
-            // this will print index 0 as choice 1 in the results list; better for user!
             int choiceNum = i + 1;
-
             System.out.println("" + choiceNum + ". " + title);
         }
     }
