@@ -168,10 +168,26 @@ public class MovieCollection
         System.out.print("Enter a name: ");
         String searchName = scanner.nextLine();
         searchName = searchName.toLowerCase();
-        for(int i = 0; i < movies.size(); i++){
-            String[] people = movies.get(i).getCast().split("");
+        ArrayList<String> dudes = new ArrayList<String>();
 
+        for(int i = 0; i < movies.size(); i++){
+            String[] people = movies.get(i).getCast().split("\\|");
+        for(int j = 0; j < people.length; j++) {
+            if (people[j].contains(searchName)) {
+                dudes.add(people[j]);
+                if(!dudes.contains(people[j])){
+                    dudes.remove(people[j]);
+                }
+            }
         }
+        }
+        for (int i = 0; i < dudes.size(); i++)
+        {
+            String name = dudes.get(i);
+            int choiceNum = i + 1;
+            System.out.println("" + choiceNum + ". " + name);
+        }
+
     }
 
     private void searchKeywords()
@@ -196,6 +212,19 @@ public class MovieCollection
             int choiceNum = i + 1;
             System.out.println("" + choiceNum + ". " + title);
         }
+
+        System.out.println("Which movie would you like to learn more about?");
+        System.out.print("Enter number: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        Movie selectedMovie = word.get(choice - 1);
+
+        displayMovieInfo(selectedMovie);
+
+        System.out.println("\n ** Press Enter to Return to Main Menu **");
+        scanner.nextLine();
     }
 
     private void listGenres()
