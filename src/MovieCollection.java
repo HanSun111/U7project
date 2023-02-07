@@ -229,7 +229,10 @@ public class MovieCollection
 
     private void listGenres()
     {
-
+        ArrayList<String> genres = new ArrayList<String>();
+        for(int i = 0; i < movies.size(); i++){
+            String[] movie = movies.get(i).getGenres().split("\\|");
+        }
     }
 
     private void listHighestRated()
