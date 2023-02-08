@@ -276,7 +276,7 @@ public class MovieCollection
             System.out.println("" + choiceNum + ". " + genre);
         }
 
-        System.out.println("Which movie would you like to learn more about?");
+        System.out.println("Which genre would you like to learn more about?");
         System.out.print("Enter number: ");
 
         int choice = scanner.nextInt();
@@ -287,9 +287,6 @@ public class MovieCollection
     private void listHighestRated()
     {
 
-        for(int i = 0; i < movies.size(); i++){
-
-        }
     }
 
     private void listHighestRevenue()
