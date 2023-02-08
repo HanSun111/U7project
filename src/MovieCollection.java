@@ -149,6 +149,17 @@ public class MovieCollection
         }
     }
 
+    public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
+    {
+        ArrayList<T> newList = new ArrayList<T>();
+        for (T item : list) {
+            if (!newList.contains(item)) {
+                newList.add(item);
+            }
+        }
+        return newList;
+    }
+
     private void displayMovieInfo(Movie movie)
     {
         System.out.println();
@@ -172,15 +183,16 @@ public class MovieCollection
 
         for(int i = 0; i < movies.size(); i++){
             String[] people = movies.get(i).getCast().split("\\|");
+            for( int x = 0; x < people.length; x++){
+                people[x] = people[x].toLowerCase();
+            }
         for(int j = 0; j < people.length; j++) {
             if (people[j].contains(searchName)) {
                 dudes.add(people[j]);
-                if(!dudes.contains(people[j])){
-                    dudes.remove(people[j]);
-                }
             }
         }
         }
+        dudes = removeDuplicates(dudes);
         for (int i = 0; i < dudes.size(); i++)
         {
             String name = dudes.get(i);
@@ -230,14 +242,25 @@ public class MovieCollection
     private void listGenres()
     {
         ArrayList<String> genres = new ArrayList<String>();
+        String[] genreGet;
         for(int i = 0; i < movies.size(); i++){
-            String[] movie = movies.get(i).getGenres().split("\\|");
+            genreGet = movies.get(i).getGenres().split("\\|");
+            for(int j = 0; j < genreGet.length; j++){
+                genres.add(genreGet[j]);
+            }
         }
+        genres = removeDuplicates(genres);
+
+
+
     }
 
     private void listHighestRated()
     {
 
+        for(int i = 0; i < movies.size(); i++){
+
+        }
     }
 
     private void listHighestRevenue()
