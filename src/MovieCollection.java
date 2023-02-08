@@ -149,6 +149,21 @@ public class MovieCollection
         }
     }
 
+    // same deal as the sortResults method, in fact it is almost a copy and paste.
+    private void sortStringResults(ArrayList<String> listToSort)
+    {
+        for (int j = 1; j < listToSort.size(); j++)
+        {
+            String tempTitle = listToSort.get(j);
+            int possibleIndex = j;
+            while (possibleIndex > 0 && tempTitle.compareTo(listToSort.get(possibleIndex - 1)) < 0)
+            {
+                listToSort.set(possibleIndex, listToSort.get(possibleIndex - 1));
+                possibleIndex--;
+            }
+            listToSort.set(possibleIndex, tempTitle);
+        }
+    }
     public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list)
     {
         ArrayList<T> newList = new ArrayList<T>();
@@ -193,13 +208,15 @@ public class MovieCollection
         }
         }
         dudes = removeDuplicates(dudes);
+        sortStringResults(dudes);
         for (int i = 0; i < dudes.size(); i++)
         {
             String name = dudes.get(i);
             int choiceNum = i + 1;
             System.out.println("" + choiceNum + ". " + name);
         }
-
+        System.out.println("Which actor would you like to learn more about?");
+        System.out.print("Enter number: ");
     }
 
     private void searchKeywords()
@@ -250,8 +267,20 @@ public class MovieCollection
             }
         }
         genres = removeDuplicates(genres);
+        sortStringResults(genres);
 
+        for (int i = 0; i < genres.size(); i++)
+        {
+            String genre = genres.get(i);
+            int choiceNum = i + 1;
+            System.out.println("" + choiceNum + ". " + genre);
+        }
 
+        System.out.println("Which movie would you like to learn more about?");
+        System.out.print("Enter number: ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
 
     }
 
